@@ -1,0 +1,47 @@
+# Ignorar archivos generados automáticamente
+vendor/
+composer.lock
+
+# Ignorar archivos de configuración
+config.php
+database.php
+
+# Ignorar archivos de caché y temporales
+cache/
+logs/
+*.log
+*.bak
+
+# Ignorar archivos de carga
+uploads/
+*.jpg
+*.png
+
+# Ignorar archivos de IDE
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+access_log
+buscador.api.php
+cantidad_cintillos.php
+categoria.api.php
+codigos.php
+data.php
+editarExcel.php
+estadisticas.api.php
+existencias.html
+existencias.php
+guardar.api.php
+Guardar.class.php
+instalaciones.php
+login.html
+login.php
+offline.html
+precios.php
+Prueba.html
+send.php
+Separador.php
+tiempo.php
+PLANTILLA2.xlsx

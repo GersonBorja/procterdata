@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+      <title>PROCTER & GAMBEL</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="theme-color" content="#252525" />
+<link rel="manifest" href="manifest.json">
+<script src="https://js.pusher.com/beams/1.0/push-notifications-cdn.js"></script>
+
+<link rel="stylesheet" href="public/css/main.css">
+<script src="https://cdn.jsdelivr.net/jsbarcode/3.5.1/JsBarcode.all.min.js"></script>
+</head>
+<body>
+<header>
+<img src="public/img/logo/p&g.svg" class="logo">
+<nav class="align">
+<a href="#" class="crearCintillos" id="btnGenerarCintillos"><i class="fa-solid fa-receipt"></i></a>
+</nav>
+</header>
+<div id="informacion" class="informacion">
+
+<div id="saludo"></div>
+<div class="buscador">
+<form id="buscador" class="align">
+<input type="text" name="buscador" id="buscadorInput" placeholder="Ingresa palabra clave, interno o barra" autocomplete="off">
+<a class="limpiarInput"><i class="far fa-times-circle"></i></a>
+<button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+</form>
+</div>
+
+<div class="align filtro">
+<b class="tituloFiltro"><i class="fa-solid fa-filter"></i> FILTRAR CATEGORIA</b>
+<select class="ignore categoriaCambio" id="categoria">
+<option data-display="TODAS">TODAS</option>
+<option value="SHAVE CARE">SHAVE CARE</option>
+<option value="HAIR CARE">HAIR CARE</option>
+<option value="DEOS">DEOS</option>
+<option value="BABY CARE">BABY CARE</option>
+<option value="ORAL CARE">ORAL CARE</option>
+<option value="FABRIC">FABRIC</option>
+<option value="PHC">PHC</option>
+<option value="NIVEA">NIVEA</option>
+<option value="LAB SUIZOS">LAB SUIZOS</option>
+</select>
+</div>
+</div>
+<div class="codigos">
+<div class="titulos">
+<b class="tituloBarra result">TODOS LOS PRODUCTOS</b>
+
+</div>
+<div id="cintillosList">
+</div>
+</div>
+<footer class="align">
+<div>
+<i class="fa-regular fa-copyright"></i>Copyright Gerson Borja || 2023
+</div>
+<div>
+<i class="fa-solid fa-flask"></i>v2.0.3
+</div>
+</footer>
+
+
+
+
+
+
+<div class="confirmacion">
+<h1><span><i class="fa-regular fa-pen-to-square"></i>  DETALLES DEL PRODUCTO</span>
+<a class="close cerrarEscaner" href="#"><i class="fa-sharp fa-solid fa-xmark"></i> </a>
+</h1>
+<div class="danger" id="noRegistrado"></div>
+<div class="infoBarra">
+<img id="ean" class="barraGenerada" width="40%">
+<div class="infoBarraDetalles">
+<div class="code_one">
+<b>INTERNO:</b> <span id="interno"></span>
+</div>
+<div class="code_two">
+<b>BARRA:</b> <span id="barra"></span>
+</div>
+</div>
+</div>
+<div class="descrip">
+<b>DESCRIPCIÓN:</b>
+<div id="descripcionP"></div>
+</div>
+<div class="factor">
+<b>FACTOR DE EMPAQUE: </b>
+<div id="factorEmpaque"></div>
+</div>
+
+<form id="miform" method="POST">
+<div class="cantidad">
+<div class="iconCantidad">
+<i class="fa-regular fa-note-sticky"></i>
+</div>
+<input type="number" name="cantidad" placeholder="Cantidad de cintillos" class="inputCintillo" autocomplete="off">
+</div>
+<br>
+<div class="align">
+<div class="cantidad">
+<div class="iconCantidad">
+<i class="fas fa-sack-dollar"></i>
+</div>
+<input type="text" name="precio" placeholder="Precio" class="inputPrecio" autocomplete="off">
+</div>
+</div>
+<br><br>
+<input type="submit" class="start" value="Añadir cintillo">
+
+</form>
+</div>
+
+
+<template id="lista">
+
+
+
+<div class="cardProducto">
+<div class="cardDescripcion">
+SHAMPOO CARBON ACTIVADO H&S 700 ML
+</div>
+<div class="align cardDetalles">
+<div class="cardPrecio">
+PRECIO: $10.90
+</div>
+<div class="cardInterno">
+INTERNO: 440845
+</div>
+</div>
+<div class="align cardAcciones">
+<div class="cardExistencia">
+EXISTENCIA: --
+</div>
+<a href="whatsapp://send?text=hola" class="cardCompartir">COMPARTIR</a>
+<a href="#" class="cardMas" data-descripcion="" data-barra="" data-interno="" data-precio="" data-factor="" data-precio="">MAS DETALLES</a>
+</div>
+</div>
+</template>
+
+<div class="modalDescargas">
+<div class="cardDescargas">
+<h1 class="align"><span><i class="fas fa-cogs"></i> Generar Archivo</span>
+
+<a class="close cerrarDescargas" href="#"><i class="fa-sharp fa-solid fa-xmark"></i> </a></h1>
+<div class="infoDescargas" id="infoDescargas">
+
+</div>
+<div class="file">
+<i class="fa-solid fa-file-excel"></i> <span id="file"></span>
+</div>
+<br>
+<a href="#" class="btnDescargarCintillos" id="btnDescargarCintillos"><i class="fas fa-download"></i> DESCARGAR </a>
+<br>
+<div class="warning">
+<i class="fas fa-exclamation-triangle"></i> Configuración de impresión: tamaño carta (8.5x11)
+8.5 son de ancho
+y 11 de alto
+</div>
+<div class="descargando">
+<div>
+<i class="fas fa-spinner fa-pulse"></i> DESCARGANDO...
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal">
+<div class="card">
+<h1>Bienvenido a la app</h1>
+<p>
+Con nuestra app puedes ver información de todos los códigos de PROCTER (interno, barras, descripción, precios, etc), y la función mas potente es poder generar tus cintillos de manera más automatizada sin necesidad de un operador, ahora lo puedes hacer tu mismo en segundos.
+</p>
+<button id="install" style="display:none;">Instalar app</button>
+<br>
+<small>Para una experiencia personalizada</small>
+<input type="text" class="nombre" id="nombre" autocomplete="off" placeholder="Dinos tu nombre">
+<a href="#" class="btnInciar align" id="iniciarApp">Comenzar <i class="fas fa-arrow-right"></i></a>
+</div>
+</div>
+<script src="public/js/jquery-1.9.0.min.js"></script>
+<script src="https://kit.fontawesome.com/13364c1e2e.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="public/css/nice-select.css">
+<script src="public/js/jquery.nice-select.min.js"></script>
+<script src="public/js/main.js" type="text/javascript"></script>
+<script>
+const beamsClient = new PusherPushNotifications.Client({
+instanceId: '60d87988-4708-453e-aab5-0b55703a8b2f',
+});
+
+beamsClient.start()
+.then(() => beamsClient.addDeviceInterest('noticias'))
+.then(() => console.log('Successfully registered and subscribed!'))
+.catch(console.error);
+
+
+if ('serviceWorker' in navigator) {
+window.addEventListener('load', function() {
+navigator.serviceWorker.register('sw.js').then(function(registration) {
+alert('ServiceWorker registration successful with scope: ', registration.scope);
+}, function(err) {
+console.log('ServiceWorker registration failed: ', err);
+});
+});
+}
+
+
+
+</script>
+</body>
+</html>

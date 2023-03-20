@@ -1,0 +1,20 @@
+{
+  "name": "Procter Data",
+  "short_name": "Procter Data",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "p&g.svg",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "p&g.svg",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
