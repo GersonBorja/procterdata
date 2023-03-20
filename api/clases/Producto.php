@@ -1,7 +1,7 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/api/clases/Database.php';
 
-class Productos extends Database {
+class Producto extends Database {
 
     protected $response;
     

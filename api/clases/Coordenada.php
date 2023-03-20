@@ -1,5 +1,5 @@
 <?php
-class Coordenadas {
+class Coordenada {
       public function darCoordenadas($puesto){
          switch ($puesto){
                # PAGINA 1
